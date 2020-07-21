@@ -1,0 +1,110 @@
+cabal-version: 2.4
+
+name:
+  {{cookiecutter.project_name}}
+version:
+  0.1.0.0
+{% if cookiecutter.synopsis != "" %}synopsis:
+  {{cookiecutter.synopsis}}{% else %}-- synopsis:{% endif %}
+description:
+  See README for more info
+homepage:
+  https://github.com/{{cookiecutter.github_username}}/{{cookiecutter.project_slug}}
+bug-reports:
+  https://github.com/{{cookiecutter.github_username}}/{{cookiecutter.project_slug}}/issues
+license:
+  MIT
+license-file:
+  LICENSE
+author:
+  {{cookiecutter.author_name}}
+maintainer:
+  {{cookiecutter.author_name}} <{{cookiecutter.maintainer_email}}>
+copyright:
+  © 2020 {{cookiecutter.author_name}}
+{% if cookiecutter.category != "" %}category:
+  {{cookiecutter.category}}{% else %}-- category:{% endif %}
+extra-doc-files:
+    README.md
+  , CHANGELOG.md
+
+library
+  exposed-modules:
+    Lib
+  -- other-modules:
+  -- other-extensions:
+  build-depends:
+    , base ^>=4.14.0.0
+  hs-source-dirs:
+    src
+  default-language:
+    Haskell2010
+  ghc-options:
+    -Wall
+    -O2
+
+executable {{cookiecutter.project_name}}
+  main-is:
+    Main.hs
+  -- other-modules:
+  -- other-extensions:
+  build-depends:
+    , base ^>=4.14.0.0
+    , {{cookiecutter.project_name}}
+  hs-source-dirs:
+    app
+  default-language:
+    Haskell2010
+  ghc-options:
+    -Wall
+    -O2
+    -rtsopts
+    -threaded
+
+test-suite test
+  default-language:
+    Haskell2010
+  type:
+    exitcode-stdio-1.0
+  hs-source-dirs:
+    test
+  main-is:
+    Main.hs
+  build-depends:
+    , {{cookiecutter.project_name}}
+    , base
+    , tasty
+    , tasty-hunit
+    , hedgehog
+    , tasty-hedgehog
+  ghc-options:
+    -Wall
+    -O2
+    -threaded
+    -rtsopts
+
+benchmark bench
+  default-language:
+    Haskell2010
+  type:
+    exitcode-stdio-1.0
+  hs-source-dirs:
+    bench
+  main-is:
+    Main.hs
+  build-depends:
+    , {{cookiecutter.project_name}}
+    , base
+    , gauge
+  ghc-options:
+    -Wall
+    -O2
+    -threaded
+    -rtsopts
+
+source-repository head
+  type:
+    git
+  location:
+    https://github.com/{{cookiecutter.github_username}}/{{cookiecutter.project_slug}}.git
+
