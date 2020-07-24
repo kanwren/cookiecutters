@@ -1,0 +1,9 @@
+{
+    "project_slug": null,
+    "project_name": "{{cookiecutter.project_slug}}",
+    "github_username": null,
+    "npm_username": "{{cookiecutter.github_username}}",
+    "author_name": "{{cookiecutter.github_username}}",
+    "author_email": null,
+    "description": ""
+}

@@ -1,0 +1,54 @@
+{
+  "name": "@{{cookiecutter.npm_username}}/{{cookiecutter.project_name}}",
+  "version": "0.0.1",
+  "description": "{{cookiecutter.description}}",
+  "main": "dist/index.umd.js",
+  "module": "dist/index.es5.js",
+  "types": "dist/types/index.d.ts",
+  "sideEffects": false,
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "test": "npx mocha --require ts-node/register test/**/*.ts",
+    "clean": "npx shx --silent rm -r dist/ || npx shx true",
+    "compile": "npx tsc",
+    "compile:watch": "npx tsc --watch",
+    "rollup": "npx rollup -c rollup.config.ts",
+    "build": "npm run clean && npm run compile && npm run rollup",
+    "lint": "npx eslint src --ext .ts"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^11.0.2",
+    "@rollup/plugin-node-resolve": "^7.1.1",
+    "@types/chai": "^4.2.11",
+    "@types/mocha": "^7.0.2",
+    "@typescript-eslint/eslint-plugin": "^2.19.0",
+    "@typescript-eslint/parser": "^2.19.0",
+    "chai": "^4.2.0",
+    "eslint": "^6.8.0",
+    "fast-check": "^1.24.1",
+    "mocha": "^7.1.1",
+    "rollup": "^1.32.0",
+    "rollup-plugin-sourcemaps": "^0.5.0",
+    "rollup-plugin-typescript2": "^0.26.0",
+    "shx": "^0.3.2",
+    "source-map": "^0.7.3",
+    "ts-node": "^8.8.2",
+    "typescript": "^3.8.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/{{cookiecutter.github_username}}/{{cookiecutter.project_slug}}.git"
+  },
+  "author": "{{cookiecutter.author_name}} <{{cookiecutter.author_email}}>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/{{cookiecutter.github_username}}/{{cookiecutter.project_slug}}/issues"
+  },
+  "homepage": "https://github.com/{{cookiecutter.github_username}}/{{cookiecutter.project_slug}}#readme",
+  "keywords": [
+    "typescript"
+  ]
+}
